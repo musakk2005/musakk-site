@@ -3,422 +3,201 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Musakk & Anciluzzo</title>
+<title>Anciluzzu</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
 <style>
   *{box-sizing:border-box;margin:0;padding:0}
-  :root{
-    --bg:#0a0a0f;--bg2:#13131a;--bg3:#1c1c26;--accent:#7c3aed;--accent2:#a855f7;
-    --text:#f0f0f0;--muted:#888;--border:#2a2a35;--card:#16161f;--success:#4ade80;--danger:#f87171
-  }
-  body{
-    background:var(--bg);color:var(--text);
-    font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
-    min-height:100vh;line-height:1.5
-  }
+  :root{--bg:#0a0a0f;--bg2:#13131a;--bg3:#1c1c26;--accent:#7c3aed;--accent2:#a855f7;--text:#f0f0f0;--muted:#888;--border:#2a2a35;--card:#16161f;--success:#4ade80;--danger:#f87171}
+  body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;min-height:100vh;line-height:1.5}
   a{color:inherit;text-decoration:none}
   button{font-family:inherit}
-
-  /* ===== NAVBAR ===== */
-  nav{
-    background:rgba(10,10,15,.85);backdrop-filter:blur(10px);
-    border-bottom:1px solid var(--border);
-    padding:0 24px;display:flex;align-items:center;justify-content:space-between;
-    height:64px;position:sticky;top:0;z-index:100
-  }
-  .nav-logo{
-    font-size:22px;font-weight:800;
-    background:linear-gradient(90deg,#7c3aed,#ec4899);
-    -webkit-background-clip:text;-webkit-text-fill-color:transparent;
-    background-clip:text
-  }
+  nav{background:rgba(10,10,15,.85);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100}
+  .nav-logo{font-size:22px;font-weight:800;background:linear-gradient(90deg,#7c3aed,#ec4899);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
   .nav-links{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
-  .nav-btn{
-    background:none;border:none;color:#aaa;
-    padding:9px 16px;border-radius:10px;cursor:pointer;
-    font-size:14px;font-weight:500;transition:all .2s
-  }
-  .nav-btn:hover{background:var(--bg3);color:#fff}
-  .nav-btn.active{background:var(--bg3);color:#fff}
-  .admin-btn{
-    background:linear-gradient(135deg,#7c3aed,#a855f7);color:#fff!important;
-    border-radius:10px;padding:9px 18px;font-size:13px;font-weight:600;
-    border:none;cursor:pointer;margin-left:8px
-  }
+  .nav-btn{background:none;border:none;color:#aaa;padding:9px 16px;border-radius:10px;cursor:pointer;font-size:14px;font-weight:500;transition:all .2s}
+  .nav-btn:hover,.nav-btn.active{background:var(--bg3);color:#fff}
+  .admin-btn{background:linear-gradient(135deg,#7c3aed,#a855f7);color:#fff!important;border-radius:10px;padding:9px 18px;font-size:13px;font-weight:600;border:none;cursor:pointer;margin-left:8px}
   .menu-toggle{display:none;background:none;border:none;color:#fff;font-size:24px;cursor:pointer}
-
-  @media(max-width:768px){
-    .menu-toggle{display:block}
-    .nav-links{display:none;position:absolute;top:64px;right:0;background:var(--bg2);
-      flex-direction:column;padding:16px;border:1px solid var(--border);border-radius:0 0 0 12px;width:220px}
-    .nav-links.open{display:flex}
-  }
-
-  /* ===== SECTIONS ===== */
+  @media(max-width:768px){.menu-toggle{display:block}.nav-links{display:none;position:absolute;top:64px;right:0;background:var(--bg2);flex-direction:column;padding:16px;border:1px solid var(--border);border-radius:0 0 0 12px;width:220px}.nav-links.open{display:flex}}
   .container{max-width:1100px;margin:0 auto;padding:32px 24px}
   .section{display:none}
   .section.active{display:block;animation:fadeIn .3s ease}
   @keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
-
-  /* ===== HOME HERO ===== */
-  .hero{
-    background:linear-gradient(135deg,var(--card) 0%,rgba(124,58,237,.08) 100%);
-    border:1px solid var(--border);border-radius:20px;padding:40px;
-    margin-bottom:32px;display:grid;grid-template-columns:1fr 1fr;gap:40px;
-    align-items:center
-  }
+  .hero{background:linear-gradient(135deg,var(--card) 0%,rgba(124,58,237,.08) 100%);border:1px solid var(--border);border-radius:20px;padding:40px;margin-bottom:32px;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
   @media(max-width:768px){.hero{grid-template-columns:1fr;padding:24px}}
   .hero-text h1{font-size:36px;font-weight:800;margin-bottom:12px;line-height:1.2}
   .hero-text p{color:#aaa;font-size:16px;line-height:1.7;margin-bottom:20px}
-  .download-app{
-    display:inline-flex;align-items:center;gap:10px;
-    background:linear-gradient(135deg,#7c3aed,#a855f7);color:#fff;
-    border-radius:12px;padding:14px 28px;font-size:15px;font-weight:600;
-    border:none;cursor:pointer;transition:transform .2s
-  }
+  .download-app{display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,#7c3aed,#a855f7);color:#fff;border-radius:12px;padding:14px 28px;font-size:15px;font-weight:600;border:none;cursor:pointer;transition:transform .2s}
   .download-app:hover{transform:translateY(-2px)}
-  .screenshot{
-    background:var(--bg3);border:2px dashed var(--border);border-radius:16px;
-    aspect-ratio:16/10;display:flex;align-items:center;justify-content:center;
-    flex-direction:column;gap:8px;color:var(--muted);overflow:hidden
-  }
+  .screenshot{background:var(--bg3);border:2px dashed var(--border);border-radius:16px;aspect-ratio:16/10;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;color:var(--muted);overflow:hidden}
   .screenshot img{width:100%;height:100%;object-fit:cover}
-
-  /* ===== SPONSORED ===== */
-  .section-title{
-    font-size:13px;font-weight:700;letter-spacing:2px;
-    color:var(--muted);text-transform:uppercase;margin-bottom:20px
-  }
+  .section-title{font-size:13px;font-weight:700;letter-spacing:2px;color:var(--muted);text-transform:uppercase;margin-bottom:20px}
   .sponsored-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
   @media(max-width:768px){.sponsored-grid{grid-template-columns:1fr}}
-  .app-card{
-    background:var(--card);border:1px solid var(--border);
-    border-radius:16px;padding:24px;text-align:center;transition:all .2s
-  }
+  .app-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:24px;text-align:center;transition:all .2s}
   .app-card:hover{border-color:var(--accent);transform:translateY(-4px)}
-  .app-icon{
-    width:64px;height:64px;border-radius:16px;margin:0 auto 16px;
-    display:flex;align-items:center;justify-content:center;font-size:32px
-  }
+  .app-icon{width:64px;height:64px;border-radius:16px;margin:0 auto 16px;display:flex;align-items:center;justify-content:center;font-size:32px}
   .app-card h3{font-size:16px;font-weight:700;margin-bottom:6px}
   .app-card p{font-size:13px;color:var(--muted);margin-bottom:16px;line-height:1.5}
-  .download-btn{
-    background:var(--bg3);border:1px solid var(--border);color:var(--text);
-    border-radius:10px;padding:10px 20px;font-size:13px;font-weight:600;
-    cursor:pointer;width:100%;transition:all .2s
-  }
+  .download-btn{background:var(--bg3);border:1px solid var(--border);color:var(--text);border-radius:10px;padding:10px 20px;font-size:13px;font-weight:600;cursor:pointer;width:100%;transition:all .2s}
   .download-btn:hover{background:var(--accent);border-color:var(--accent)}
-
-  /* ===== PAGE HEADERS ===== */
   .page-header{margin-bottom:28px}
   .page-header h2{font-size:28px;font-weight:800;margin-bottom:6px}
   .page-header p{color:var(--muted);font-size:15px}
-
-  /* ===== FILE GRID ===== */
-  .file-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fill,minmax(240px,1fr));
-    gap:18px
-  }
-  .file-card{
-    background:var(--card);border:1px solid var(--border);
-    border-radius:14px;padding:20px;transition:all .2s;position:relative
-  }
+  .file-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:18px}
+  .file-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:20px;transition:all .2s;position:relative}
   .file-card:hover{border-color:var(--accent)}
-  .file-icon{
-    width:48px;height:48px;border-radius:12px;background:var(--bg3);
-    display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:14px
-  }
+  .file-icon{width:48px;height:48px;border-radius:12px;background:var(--bg3);display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:14px}
   .file-card h3{font-size:15px;font-weight:700;margin-bottom:6px;word-break:break-word}
   .file-desc{font-size:13px;color:#aaa;margin-bottom:8px;min-height:36px}
   .file-meta{font-size:11px;color:var(--muted);margin-bottom:14px}
-  .dl-btn{
-    background:linear-gradient(135deg,#7c3aed,#a855f7);color:#fff;
-    border:none;border-radius:10px;padding:10px;font-size:13px;
-    font-weight:600;cursor:pointer;width:100%
-  }
-  .empty-state{
-    text-align:center;padding:80px 20px;color:var(--muted);
-    grid-column:1/-1
-  }
+  .dl-btn{background:linear-gradient(135deg,#7c3aed,#a855f7);color:#fff;border:none;border-radius:10px;padding:10px;font-size:13px;font-weight:600;cursor:pointer;width:100%}
+  .empty-state{text-align:center;padding:80px 20px;color:var(--muted);grid-column:1/-1}
   .empty-state .icon{font-size:64px;margin-bottom:20px;opacity:.3}
   .empty-state h3{font-size:18px;margin-bottom:8px;color:#aaa}
-
-  /* ===== ABOUT ===== */
-  .about-card{
-    background:linear-gradient(135deg,var(--card) 0%,rgba(168,85,247,.08) 100%);
-    border:1px solid var(--border);border-radius:24px;
-    padding:56px 32px;text-align:center;max-width:600px;margin:0 auto
-  }
-  .avatar{
-    width:120px;height:120px;border-radius:50%;
-    background:linear-gradient(135deg,#7c3aed,#ec4899);
-    margin:0 auto 24px;display:flex;align-items:center;justify-content:center;
-    font-size:48px;font-weight:800;color:#fff;overflow:hidden
-  }
+  .about-card{background:linear-gradient(135deg,var(--card) 0%,rgba(168,85,247,.08) 100%);border:1px solid var(--border);border-radius:24px;padding:56px 32px;text-align:center;max-width:600px;margin:0 auto}
+  .avatar{width:120px;height:120px;border-radius:50%;background:linear-gradient(135deg,#7c3aed,#ec4899);margin:0 auto 24px;display:flex;align-items:center;justify-content:center;font-size:48px;font-weight:800;color:#fff;overflow:hidden}
   .avatar img{width:100%;height:100%;object-fit:cover}
   .about-card h2{font-size:30px;font-weight:800;margin-bottom:12px}
   .about-card p{color:#bbb;font-size:16px;line-height:1.8;margin-bottom:8px}
-  .socio-tag{
-    display:inline-block;background:var(--bg3);border:1px solid var(--accent);
-    border-radius:20px;padding:8px 20px;font-size:14px;
-    color:var(--accent2);margin-top:20px;font-weight:600
-  }
-
-  /* ===== FOOTER ABOUT ===== */
-  .footer-about{
-    margin-top:80px;padding:32px 24px;border-top:1px solid var(--border);
-    text-align:center;color:var(--muted);font-size:13px;line-height:1.8
-  }
+  .socio-tag{display:inline-block;background:var(--bg3);border:1px solid var(--accent);border-radius:20px;padding:8px 20px;font-size:14px;color:var(--accent2);margin-top:20px;font-weight:600}
+  .footer-about{margin-top:80px;padding:32px 24px;border-top:1px solid var(--border);text-align:center;color:var(--muted);font-size:13px;line-height:1.8}
   .footer-about strong{color:var(--accent2)}
-
-  /* ===== OVERLAY / MODAL ===== */
-  .overlay{
-    position:fixed;top:0;left:0;width:100%;height:100%;
-    background:rgba(0,0,0,.8);backdrop-filter:blur(8px);
-    display:flex;align-items:center;justify-content:center;z-index:200;padding:20px
-  }
-  .modal{
-    background:var(--bg2);border:1px solid var(--border);border-radius:20px;
-    padding:32px;width:100%;max-width:420px
-  }
+  .overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.8);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;z-index:200;padding:20px}
+  .modal{background:var(--bg2);border:1px solid var(--border);border-radius:20px;padding:32px;width:100%;max-width:420px}
   .modal h3{font-size:20px;font-weight:700;margin-bottom:10px}
   .modal p{color:var(--muted);font-size:14px;margin-bottom:24px;line-height:1.6}
   .modal-btns{display:flex;gap:12px}
-  .modal-btns button{
-    flex:1;padding:12px;border-radius:10px;font-size:14px;font-weight:600;
-    cursor:pointer;border:none;transition:all .2s
-  }
-  .btn-primary{
-    background:linear-gradient(135deg,#7c3aed,#a855f7);color:#fff
-  }
+  .modal-btns button{flex:1;padding:12px;border-radius:10px;font-size:14px;font-weight:600;cursor:pointer;border:none;transition:all .2s}
+  .btn-primary{background:linear-gradient(135deg,#7c3aed,#a855f7);color:#fff}
   .btn-secondary{background:var(--bg3);color:var(--text);border:1px solid var(--border)}
-  .btn-primary:hover,.btn-secondary:hover{opacity:.9}
-
-  /* ===== ADMIN PANEL ===== */
-  .admin-overlay{
-    position:fixed;top:0;left:0;width:100%;height:100%;
-    background:var(--bg);z-index:300;overflow-y:auto
-  }
-  .admin-header{
-    background:var(--bg2);border-bottom:1px solid var(--border);
-    padding:16px 24px;display:flex;align-items:center;justify-content:space-between;
-    position:sticky;top:0;z-index:10
-  }
+  .admin-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:var(--bg);z-index:300;overflow-y:auto}
+  .admin-header{background:var(--bg2);border-bottom:1px solid var(--border);padding:16px 24px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:10}
   .admin-header h2{font-size:20px;font-weight:700}
   .admin-content{padding:24px;max-width:900px;margin:0 auto}
-  .admin-panel{
-    background:var(--bg2);border:1px solid var(--border);border-radius:16px;
-    padding:24px;margin-bottom:20px
-  }
+  .admin-panel{background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:24px;margin-bottom:20px}
   .admin-panel h3{font-size:17px;font-weight:700;margin-bottom:16px;color:var(--accent2)}
-  .input-field{
-    background:var(--bg3);border:1px solid var(--border);color:var(--text);
-    border-radius:10px;padding:12px 16px;width:100%;font-size:14px;
-    margin-bottom:12px;font-family:inherit
-  }
+  .input-field{background:var(--bg3);border:1px solid var(--border);color:var(--text);border-radius:10px;padding:12px 16px;width:100%;font-size:14px;margin-bottom:12px;font-family:inherit}
   .input-field:focus{outline:none;border-color:var(--accent)}
   textarea.input-field{resize:vertical;min-height:80px}
-  .upload-submit{
-    background:linear-gradient(135deg,#7c3aed,#a855f7);color:#fff;
-    border:none;border-radius:10px;padding:12px 24px;font-size:14px;
-    font-weight:600;cursor:pointer;width:100%
-  }
-  .admin-list-item{
-    background:var(--bg3);border-radius:10px;padding:14px;
-    margin-bottom:10px;display:flex;align-items:center;justify-content:space-between;
-    gap:12px
-  }
+  .upload-submit{background:linear-gradient(135deg,#7c3aed,#a855f7);color:#fff;border:none;border-radius:10px;padding:12px 24px;font-size:14px;font-weight:600;cursor:pointer;width:100%}
+  .upload-submit:disabled{opacity:.5;cursor:not-allowed}
+  .upload-toggle{display:flex;gap:8px;margin-bottom:16px;background:var(--bg3);padding:4px;border-radius:10px}
+  .upload-toggle button{flex:1;padding:8px;border:none;background:transparent;color:var(--muted);border-radius:8px;cursor:pointer;font-size:13px;font-weight:600}
+  .upload-toggle button.active{background:var(--accent);color:#fff}
+  .file-input-wrapper{position:relative;display:block;margin-bottom:12px}
+  .file-input-label{background:var(--bg3);border:2px dashed var(--border);border-radius:10px;padding:24px;text-align:center;cursor:pointer;display:block;color:var(--muted);font-size:14px;transition:all .2s}
+  .file-input-label:hover{border-color:var(--accent);color:var(--accent2)}
+  .file-input-label.has-file{border-color:var(--success);color:var(--success);border-style:solid}
+  .progress-bar{width:100%;height:6px;background:var(--bg3);border-radius:3px;overflow:hidden;margin-top:12px;display:none}
+  .progress-bar.active{display:block}
+  .progress-fill{height:100%;background:linear-gradient(90deg,#7c3aed,#ec4899);width:0%;transition:width .2s}
+  .admin-list-item{background:var(--bg3);border-radius:10px;padding:14px;margin-bottom:10px;display:flex;align-items:center;justify-content:space-between;gap:12px}
   .admin-list-item .info{flex:1;min-width:0}
   .admin-list-item h4{font-size:14px;font-weight:600;margin-bottom:2px}
   .admin-list-item p{font-size:12px;color:var(--muted);word-break:break-all}
-  .delete-btn{
-    background:var(--danger);color:#fff;border:none;border-radius:8px;
-    padding:8px 14px;font-size:12px;font-weight:600;cursor:pointer
-  }
-  .visitor-item{
-    background:var(--bg3);border-radius:10px;padding:14px;margin-bottom:8px;
-    font-size:13px
-  }
+  .delete-btn{background:var(--danger);color:#fff;border:none;border-radius:8px;padding:8px 14px;font-size:12px;font-weight:600;cursor:pointer}
+  .visitor-item{background:var(--bg3);border-radius:10px;padding:14px;margin-bottom:8px;font-size:13px}
   .visitor-item .ip{color:var(--accent2);font-weight:600}
   .visitor-item .meta{color:var(--muted);font-size:11px;margin-top:4px}
-
-  /* ===== TAGS ===== */
-  .tag{
-    display:inline-block;font-size:10px;padding:3px 10px;border-radius:20px;
-    font-weight:700;margin-bottom:8px;letter-spacing:.5px
-  }
+  .tag{display:inline-block;font-size:10px;padding:3px 10px;border-radius:20px;font-weight:700;margin-bottom:8px;letter-spacing:.5px}
   .tag-apk{background:rgba(74,222,128,.15);color:#4ade80}
   .tag-pc{background:rgba(96,165,250,.15);color:#60a5fa}
-
-  /* ===== FOOTER ===== */
-  .footer{
-    text-align:center;padding:20px;color:var(--muted);font-size:11px;
-    border-top:1px solid var(--border);margin-top:40px
-  }
+  .tag-hosted{background:rgba(168,85,247,.15);color:#c084fc;margin-left:4px}
+  .footer{text-align:center;padding:20px;color:var(--muted);font-size:11px;border-top:1px solid var(--border);margin-top:40px}
   .footer .info{margin-top:6px;opacity:.7}
-
-  /* hide file input */
   input[type=file]{display:none}
-
-  /* loading */
-  .loader{
-    border:3px solid var(--border);border-top:3px solid var(--accent);
-    border-radius:50%;width:30px;height:30px;
-    animation:spin 1s linear infinite;margin:20px auto
-  }
-  @keyframes spin{to{transform:rotate(360deg)}}
   .err{color:var(--danger);font-size:12px;margin-top:8px}
   .ok{color:var(--success);font-size:12px;margin-top:8px}
+  .warn{background:rgba(251,191,36,.1);border:1px solid rgba(251,191,36,.3);border-radius:8px;padding:10px 14px;font-size:12px;color:#fbbf24;margin-bottom:12px}
 </style>
 </head>
 <body>
 
-<!-- NAVBAR -->
 <nav>
   <a href="#" class="nav-logo">⚡ Musakk</a>
   <button class="menu-toggle" onclick="document.getElementById('navlinks').classList.toggle('open')">☰</button>
   <div class="nav-links" id="navlinks">
-    <button class="nav-btn active" data-section="home" onclick="showSection('home',event)">🏠 Home</button>
-    <button class="nav-btn" data-section="apk" onclick="showSection('apk',event)">📱 APK</button>
-    <button class="nav-btn" data-section="programmi" onclick="showSection('programmi',event)">💻 Programmi</button>
-    <button class="nav-btn" data-section="about" onclick="showSection('about',event)">👤 About</button>
+    <button class="nav-btn active" onclick="showSection('home',event)">🏠 Home</button>
+    <button class="nav-btn" onclick="showSection('apk',event)">📱 APK</button>
+    <button class="nav-btn" onclick="showSection('programmi',event)">💻 Programmi</button>
+    <button class="nav-btn" onclick="showSection('about',event)">👤 About</button>
     <button class="admin-btn" onclick="showAdmin()">🔐 Admin</button>
   </div>
 </nav>
 
 <div class="container">
-
-  <!-- ====== HOME ====== -->
   <section class="section active" id="section-home">
     <div class="hero">
       <div class="hero-text">
         <span class="tag" style="background:rgba(168,85,247,.15);color:#c084fc">★ In evidenza</span>
         <h1 id="app-name">La Mia App</h1>
         <p id="app-desc">Vai nel pannello Admin per personalizzare nome, descrizione e screenshot della tua app!</p>
-        <button class="download-app" id="app-download-btn" onclick="downloadMainApp()">⬇ Scarica ora</button>
+        <button class="download-app" onclick="downloadMainApp()">⬇ Scarica ora</button>
       </div>
       <div class="screenshot" id="screenshot-display">
         <span style="font-size:42px;opacity:.3">📱</span>
         <span style="font-size:13px">Nessuno screenshot caricato</span>
       </div>
     </div>
-
     <div class="section-title">App e Programmi Consigliati</div>
     <div class="sponsored-grid">
-      <div class="app-card">
-        <div class="app-icon" style="background:linear-gradient(135deg,#f97316,#ea580c)">🎬</div>
-        <h3>VLC Media Player</h3>
-        <p>Riproduttore multimediale gratuito e open source</p>
-        <button class="download-btn" onclick="window.open('https://www.videolan.org/vlc/','_blank')">Scarica gratis</button>
-      </div>
-      <div class="app-card">
-        <div class="app-icon" style="background:linear-gradient(135deg,#22c55e,#16a34a)">🌊</div>
-        <h3>uTorrent</h3>
-        <p>Client BitTorrent leggero e veloce</p>
-        <button class="download-btn" onclick="window.open('https://www.utorrent.com/','_blank')">Scarica gratis</button>
-      </div>
-      <div class="app-card">
-        <div class="app-icon" style="background:linear-gradient(135deg,#3b82f6,#1d4ed8)">📦</div>
-        <h3>WinRAR</h3>
-        <p>Compressore di file potente e versatile</p>
-        <button class="download-btn" onclick="window.open('https://www.win-rar.com/','_blank')">Scarica gratis</button>
-      </div>
+      <div class="app-card"><div class="app-icon" style="background:linear-gradient(135deg,#f97316,#ea580c)">🎬</div><h3>VLC Media Player</h3><p>Riproduttore multimediale gratuito e open source</p><button class="download-btn" onclick="window.open('https://www.videolan.org/vlc/','_blank')">Scarica gratis</button></div>
+      <div class="app-card"><div class="app-icon" style="background:linear-gradient(135deg,#22c55e,#16a34a)">🌊</div><h3>uTorrent</h3><p>Client BitTorrent leggero e veloce</p><button class="download-btn" onclick="window.open('https://www.utorrent.com/','_blank')">Scarica gratis</button></div>
+      <div class="app-card"><div class="app-icon" style="background:linear-gradient(135deg,#3b82f6,#1d4ed8)">📦</div><h3>WinRAR</h3><p>Compressore di file potente e versatile</p><button class="download-btn" onclick="window.open('https://www.win-rar.com/','_blank')">Scarica gratis</button></div>
     </div>
   </section>
 
-  <!-- ====== APK ====== -->
   <section class="section" id="section-apk">
-    <div class="page-header">
-      <h2>📱 APK Android</h2>
-      <p>App Android pronte da scaricare</p>
-    </div>
-    <div class="file-grid" id="apk-grid">
-      <div class="empty-state">
-        <div class="icon">📱</div>
-        <h3>Nessun APK disponibile</h3>
-        <p>I file caricati appariranno qui</p>
-      </div>
-    </div>
+    <div class="page-header"><h2>📱 APK Android</h2><p>App Android pronte da scaricare</p></div>
+    <div class="file-grid" id="apk-grid"><div class="empty-state"><div class="icon">📱</div><h3>Nessun APK disponibile</h3><p>I file caricati appariranno qui</p></div></div>
   </section>
 
-  <!-- ====== PROGRAMMI ====== -->
   <section class="section" id="section-programmi">
-    <div class="page-header">
-      <h2>💻 Programmi PC</h2>
-      <p>Software per Windows</p>
-    </div>
-    <div class="file-grid" id="prog-grid">
-      <div class="empty-state">
-        <div class="icon">💻</div>
-        <h3>Nessun programma disponibile</h3>
-        <p>I file caricati appariranno qui</p>
-      </div>
-    </div>
+    <div class="page-header"><h2>💻 Programmi PC</h2><p>Software per Windows</p></div>
+    <div class="file-grid" id="prog-grid"><div class="empty-state"><div class="icon">💻</div><h3>Nessun programma disponibile</h3><p>I file caricati appariranno qui</p></div></div>
   </section>
 
-  <!-- ====== ABOUT ====== -->
   <section class="section" id="section-about">
-    <div class="page-header" style="text-align:center">
-      <h2>👤 Chi siamo</h2>
-    </div>
+    <div class="page-header" style="text-align:center"><h2>👤 Chi siamo</h2></div>
     <div class="about-card">
-      <div class="avatar" id="about-avatar">M</div>
+      <div class="avatar">M</div>
       <h2>Ciao, sono Musakk 👋</h2>
       <p>E questo è il mio sito.</p>
-      <p><strong style="color:var(--accent2)">L'era dei pirati è appena cominciata</strong> SALPATEEEE!!!!</p>
+      <p><strong style="color:var(--accent2)">L'era dei pirati è appena cominciata</strong> SALPATEEE!!!</p>
       <span class="socio-tag">🤝 Socio: Anciluzzo</span>
     </div>
   </section>
 
-  <!-- ====== FOOTER ABOUT (sempre visibile) ====== -->
-  <div class="footer-about">
-    <p>👋 Ciao, sono <strong>Musakk</strong> — questo è il mio sito.<br>
-    Il mio socio <strong>Anciluzzo</strong> ti porterà sempre cose nuove!</p>
-  </div>
+  <div class="footer-about"><p>👋 Ciao, sono <strong>Musakk</strong> — questo è il mio sito.<br> <strong>L'era dei pirati è appena cominciata</strong> SALPATEEE!!!</p></div>
 </div>
 
-<!-- FOOTER -->
-<div class="footer">
-  © Musakk & Anciluzzo · Tutti i diritti riservati
-  <div class="info">IP: <span id="ip-display">caricamento...</span> · 📍 <span id="loc-display">non condivisa</span></div>
-</div>
+<div class="footer">© Musakk & Anciluzzo · Tutti i diritti riservati<div class="info">IP: <span id="ip-display">caricamento...</span> · 📍 <span id="loc-display">non condivisa</span></div></div>
 
-<!-- ====== LOCATION REQUEST OVERLAY ====== -->
 <div class="overlay" id="loc-overlay">
   <div class="modal">
     <div style="font-size:48px;margin-bottom:16px;text-align:center">📍</div>
     <h3>Condividi la tua posizione?</h3>
-    <p>Vorremmo conoscere la tua posizione approssimativa per offrirti un'esperienza migliore. È <strong>completamente facoltativo</strong> e puoi rifiutare.</p>
-    <div class="modal-btns">
-      <button class="btn-primary" onclick="getLocation()">Sì, condividi</button>
-      <button class="btn-secondary" onclick="denyLocation()">No grazie</button>
-    </div>
+    <p>Vorremmo conoscere la tua posizione approssimativa. È <strong>completamente facoltativo</strong>.</p>
+    <div class="modal-btns"><button class="btn-primary" onclick="getLocation()">Sì, condividi</button><button class="btn-secondary" onclick="denyLocation()">No grazie</button></div>
   </div>
 </div>
 
-<!-- ====== ADMIN LOGIN OVERLAY ====== -->
 <div class="overlay" id="admin-login" style="display:none">
   <div class="modal">
     <h3 style="margin-bottom:20px">🔐 Accesso Admin</h3>
-    <input class="input-field" type="password" id="admin-pw" placeholder="Password admin" onkeydown="if(event.key==='Enter')checkAdmin()" autofocus>
-    <div class="modal-btns">
-      <button class="btn-primary" onclick="checkAdmin()">Accedi</button>
-      <button class="btn-secondary" onclick="closeAdminLogin()">Annulla</button>
-    </div>
+    <input class="input-field" type="password" id="admin-pw" placeholder="Password admin" onkeydown="if(event.key==='Enter')checkAdmin()">
+    <div class="modal-btns"><button class="btn-primary" onclick="checkAdmin()">Accedi</button><button class="btn-secondary" onclick="closeAdminLogin()">Annulla</button></div>
     <p class="err" id="pw-err" style="display:none">❌ Password errata</p>
   </div>
 </div>
 
-<!-- ====== ADMIN PANEL ====== -->
 <div class="admin-overlay" id="admin-panel" style="display:none">
   <div class="admin-header">
     <h2>⚙️ Pannello Admin</h2>
     <button class="btn-secondary" style="padding:10px 20px;border-radius:10px;border:none;cursor:pointer" onclick="closeAdminPanel()">✕ Esci</button>
   </div>
   <div class="admin-content">
-
-    <!-- Info App Principale -->
     <div class="admin-panel">
       <h3>🌟 App principale (Home)</h3>
       <input class="input-field" id="edit-appname" placeholder="Nome app">
@@ -431,111 +210,147 @@
       <p class="ok" id="app-saved" style="display:none">✅ Salvato!</p>
     </div>
 
-    <!-- Aggiungi APK -->
     <div class="admin-panel">
       <h3>📱 Aggiungi APK</h3>
+      <div class="upload-toggle">
+        <button class="active" onclick="switchMode('apk','file')" id="apk-mode-file">📤 Carica file</button>
+        <button onclick="switchMode('apk','link')" id="apk-mode-link">🔗 Link esterno</button>
+      </div>
+      <div class="warn">⚠️ Max 50 MB per file caricato. Per APK più grandi usa "Link esterno"</div>
       <input class="input-field" id="apk-title" placeholder="Nome APK (es. WhatsApp GB)">
       <input class="input-field" id="apk-desc" placeholder="Descrizione breve">
-      <input class="input-field" id="apk-link" placeholder="Link download diretto (URL)">
-      <button class="upload-submit" onclick="addFile('apk')">➕ Aggiungi APK</button>
+      <div id="apk-file-input">
+        <div class="file-input-wrapper">
+          <label class="file-input-label" id="apk-file-label" for="apk-file">📁 Clicca per scegliere il file APK</label>
+          <input type="file" id="apk-file" accept=".apk" onchange="onFileSelected('apk',this)">
+        </div>
+      </div>
+      <input class="input-field" id="apk-link" placeholder="Link download diretto (URL)" style="display:none">
+      <div class="progress-bar" id="apk-progress"><div class="progress-fill" id="apk-progress-fill"></div></div>
+      <button class="upload-submit" id="apk-submit" onclick="addFile('apk')">➕ Aggiungi APK</button>
       <p class="ok" id="apk-saved" style="display:none">✅ APK aggiunto!</p>
-
+      <p class="err" id="apk-err" style="display:none"></p>
       <h3 style="margin-top:24px;font-size:14px;color:var(--muted)">APK CARICATI</h3>
       <div id="apk-admin-list" style="margin-top:12px"></div>
     </div>
 
-    <!-- Aggiungi Programma -->
     <div class="admin-panel">
       <h3>💻 Aggiungi Programma PC</h3>
+      <div class="upload-toggle">
+        <button class="active" onclick="switchMode('prog','file')" id="prog-mode-file">📤 Carica file</button>
+        <button onclick="switchMode('prog','link')" id="prog-mode-link">🔗 Link esterno</button>
+      </div>
+      <div class="warn">⚠️ Max 50 MB per file caricato. Per programmi più grandi usa "Link esterno"</div>
       <input class="input-field" id="prog-title" placeholder="Nome programma (es. Adobe Reader)">
       <input class="input-field" id="prog-desc" placeholder="Descrizione breve">
-      <input class="input-field" id="prog-link" placeholder="Link download diretto (URL)">
-      <button class="upload-submit" onclick="addFile('prog')">➕ Aggiungi Programma</button>
+      <div id="prog-file-input">
+        <div class="file-input-wrapper">
+          <label class="file-input-label" id="prog-file-label" for="prog-file">📁 Clicca per scegliere il file (.exe, .zip, .msi)</label>
+          <input type="file" id="prog-file" onchange="onFileSelected('prog',this)">
+        </div>
+      </div>
+      <input class="input-field" id="prog-link" placeholder="Link download diretto (URL)" style="display:none">
+      <div class="progress-bar" id="prog-progress"><div class="progress-fill" id="prog-progress-fill"></div></div>
+      <button class="upload-submit" id="prog-submit" onclick="addFile('prog')">➕ Aggiungi Programma</button>
       <p class="ok" id="prog-saved" style="display:none">✅ Programma aggiunto!</p>
-
+      <p class="err" id="prog-err" style="display:none"></p>
       <h3 style="margin-top:24px;font-size:14px;color:var(--muted)">PROGRAMMI CARICATI</h3>
       <div id="prog-admin-list" style="margin-top:12px"></div>
     </div>
 
-    <!-- Log Visitatori -->
     <div class="admin-panel">
       <h3>📊 Log Visitatori</h3>
       <p style="color:var(--muted);font-size:13px;margin-bottom:16px">Ultimi 50 accessi al sito</p>
       <div id="visitor-list">Caricamento...</div>
     </div>
+
+    <div class="admin-panel">
+      <h3>💾 Info Storage</h3>
+      <p style="color:var(--muted);font-size:13px">Firebase Storage gratuito: <strong style="color:var(--text)">5 GB</strong> totali · 1 GB di download al giorno</p>
+      <p style="color:var(--muted);font-size:13px;margin-top:8px">📁 File caricati totali: <span id="storage-count">0</span></p>
+    </div>
   </div>
 </div>
 
-<!-- ====================================================== -->
-<!-- ============ FIREBASE + APP LOGIC ============= -->
-<!-- ====================================================== -->
 <script type="module">
-// ⚠️ INCOLLA QUI LA TUA CONFIGURAZIONE FIREBASE
-// (vedi istruzioni nella chat per ottenerla)
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-import { getFirestore, collection, addDoc, getDocs, deleteDoc, doc, setDoc, getDoc, query, orderBy, limit, serverTimestamp }
-  from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+import { getFirestore, collection, addDoc, getDocs, deleteDoc, doc, setDoc, getDoc, query, orderBy, limit } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+import { getStorage, ref, uploadBytesResumable, getDownloadURL, deleteObject } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-storage.js";
 
+// ⚠️ INCOLLA QUI LA TUA CONFIGURAZIONE FIREBASE
 const firebaseConfig = {
-  apiKey: "AIzaSyASmDPyMu5gv92Kl2cmjFJmFqXu_4Gp4ws",
-  authDomain: "anciluzzu-137f4.firebaseapp.com",
-  projectId: "anciluzzu-137f4",
-  storageBucket: "anciluzzu-137f4.firebasestorage.app",
-  messagingSenderId: "300418097782",
-  appId: "1:300418097782:web:2e10fd047ff161d7c0b557"
+  apiKey: "INCOLLA_QUI",
+  authDomain: "INCOLLA_QUI",
+  projectId: "INCOLLA_QUI",
+  storageBucket: "INCOLLA_QUI",
+  messagingSenderId: "INCOLLA_QUI",
+  appId: "INCOLLA_QUI"
 };
 
-let db = null;
-let firebaseReady = false;
+let db = null, storage = null, firebaseReady = false;
 try {
   const app = initializeApp(firebaseConfig);
   db = getFirestore(app);
+  storage = getStorage(app);
   firebaseReady = true;
-  console.log("✅ Firebase connesso");
-} catch(e){
-  console.warn("⚠️ Firebase non configurato. Inserisci la config nel codice.");
-}
+} catch(e){ console.warn("Firebase non configurato", e); }
 
-// ============ PASSWORD ADMIN ============
-const ADMIN_PW = "Punto2025!";   // ⚠️ CAMBIA QUESTA PASSWORD!
+// ⚠️ CAMBIA QUESTA PASSWORD!
+const ADMIN_PW = "Punto2025!";
+const MAX_FILE_SIZE = 50 * 1024 * 1024;
 
-// ============ DATA STORAGE FALLBACK ============
 const LS = {
   get:(k,def)=>{ try{return JSON.parse(localStorage.getItem(k))||def}catch(e){return def} },
   set:(k,v)=>localStorage.setItem(k,JSON.stringify(v))
 };
 
-// ============ NAVIGATION ============
+const modes = { apk:'file', prog:'file' };
+const selectedFiles = { apk:null, prog:null };
+
+window.switchMode = function(type, mode){
+  modes[type] = mode;
+  document.getElementById(type+'-mode-file').classList.toggle('active', mode==='file');
+  document.getElementById(type+'-mode-link').classList.toggle('active', mode==='link');
+  document.getElementById(type+'-file-input').style.display = mode==='file'?'block':'none';
+  document.getElementById(type+'-link').style.display = mode==='link'?'block':'none';
+};
+
+window.onFileSelected = function(type, input){
+  const file = input.files[0];
+  if(!file) return;
+  if(file.size > MAX_FILE_SIZE){
+    alert(`❌ File troppo grande! Max ${MAX_FILE_SIZE/1024/1024} MB`);
+    input.value=''; return;
+  }
+  selectedFiles[type] = file;
+  const label = document.getElementById(type+'-file-label');
+  label.classList.add('has-file');
+  label.innerHTML = `✅ ${file.name}<br><small>${(file.size/1024/1024).toFixed(2)} MB</small>`;
+};
+
 window.showSection = function(name,evt){
   document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
   document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
   document.getElementById('section-'+name).classList.add('active');
-  if(evt){
-    const btn = evt.target.closest('.nav-btn');
-    if(btn) btn.classList.add('active');
-  }
+  if(evt){ const btn = evt.target.closest('.nav-btn'); if(btn) btn.classList.add('active'); }
   document.getElementById('navlinks').classList.remove('open');
   window.scrollTo({top:0,behavior:'smooth'});
 };
 
-// ============ DATA FUNCTIONS ============
 async function loadAppInfo(){
   if(firebaseReady){
     try {
-      const snap = await getDoc(doc(db, "config", "main"));
+      const snap = await getDoc(doc(db,"config","main"));
       if(snap.exists()){
         const d = snap.data();
         if(d.name) document.getElementById('app-name').textContent = d.name;
         if(d.desc) document.getElementById('app-desc').textContent = d.desc;
-        if(d.screenshot){
-          document.getElementById('screenshot-display').innerHTML = `<img src="${d.screenshot}">`;
-        }
+        if(d.screenshot) document.getElementById('screenshot-display').innerHTML = `<img src="${d.screenshot}">`;
         window._appLink = d.link || '';
         return;
       }
     } catch(e){ console.error(e); }
   }
-  // fallback localStorage
   const d = LS.get('appInfo',{});
   if(d.name) document.getElementById('app-name').textContent = d.name;
   if(d.desc) document.getElementById('app-desc').textContent = d.desc;
@@ -545,7 +360,7 @@ async function loadAppInfo(){
 
 window.downloadMainApp = function(){
   if(window._appLink) window.open(window._appLink,'_blank');
-  else alert('⚠️ Nessun link configurato. Vai in admin per aggiungerlo.');
+  else alert('⚠️ Nessun link configurato.');
 };
 
 window.saveAppInfo = async function(){
@@ -553,12 +368,9 @@ window.saveAppInfo = async function(){
     name: document.getElementById('edit-appname').value || 'La Mia App',
     desc: document.getElementById('edit-appdesc').value || '',
     link: document.getElementById('edit-applink').value || '',
-    screenshot: window._tempScreenshot || (await getCurrentScreenshot())
+    screenshot: window._tempScreenshot || await getCurrentScreenshot()
   };
-  if(firebaseReady){
-    try { await setDoc(doc(db,"config","main"), data); }
-    catch(e){ console.error(e); }
-  }
+  if(firebaseReady){ try { await setDoc(doc(db,"config","main"), data); } catch(e){ console.error(e); } }
   LS.set('appInfo', data);
   document.getElementById('app-name').textContent = data.name;
   document.getElementById('app-desc').textContent = data.desc;
@@ -570,10 +382,8 @@ window.saveAppInfo = async function(){
 
 async function getCurrentScreenshot(){
   if(firebaseReady){
-    try {
-      const snap = await getDoc(doc(db,"config","main"));
-      return snap.exists()?snap.data().screenshot:null;
-    } catch(e){ return null; }
+    try { const snap = await getDoc(doc(db,"config","main")); return snap.exists()?snap.data().screenshot:null; }
+    catch(e){ return null; }
   }
   return LS.get('appInfo',{}).screenshot;
 }
@@ -581,7 +391,7 @@ async function getCurrentScreenshot(){
 window.uploadScreenshot = function(input){
   const file = input.files[0];
   if(!file) return;
-  if(file.size > 1000000){ alert('⚠️ Immagine troppo grande! Max 1MB'); return; }
+  if(file.size > 1000000){ alert('⚠️ Max 1MB'); return; }
   const reader = new FileReader();
   reader.onload = e => {
     window._tempScreenshot = e.target.result;
@@ -590,7 +400,6 @@ window.uploadScreenshot = function(input){
   reader.readAsDataURL(file);
 };
 
-// ============ FILES (APK / Programmi) ============
 async function loadFiles(type){
   const items = [];
   if(firebaseReady){
@@ -605,38 +414,109 @@ async function loadFiles(type){
 }
 
 window.addFile = async function(type){
-  const t = type==='apk'?'apk':'prog';
-  const title = document.getElementById(t+'-title').value.trim();
-  const desc = document.getElementById(t+'-desc').value.trim();
-  const link = document.getElementById(t+'-link').value.trim();
-  if(!title||!link){ alert('❌ Inserisci almeno nome e link!'); return; }
-  const data = {title,desc,link,date:new Date().toLocaleDateString('it-IT'),ts:Date.now()};
-  if(firebaseReady){
-    try { await addDoc(collection(db, type==='apk'?'apk':'prog'), data); }
-    catch(e){ alert('Errore: '+e.message); return; }
+  const title = document.getElementById(type+'-title').value.trim();
+  const desc = document.getElementById(type+'-desc').value.trim();
+  const errEl = document.getElementById(type+'-err');
+  const okEl = document.getElementById(type+'-saved');
+  const submitBtn = document.getElementById(type+'-submit');
+  errEl.style.display='none';
+
+  if(!title){ errEl.textContent='❌ Inserisci il nome!'; errEl.style.display='block'; return; }
+
+  let link = '';
+  let storagePath = null;
+
+  if(modes[type]==='file'){
+    const file = selectedFiles[type];
+    if(!file){ errEl.textContent='❌ Scegli un file!'; errEl.style.display='block'; return; }
+    if(!firebaseReady){ errEl.textContent='❌ Firebase non configurato!'; errEl.style.display='block'; return; }
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = '⏳ Caricamento... 0%';
+    const progressBar = document.getElementById(type+'-progress');
+    const progressFill = document.getElementById(type+'-progress-fill');
+    progressBar.classList.add('active');
+
+    try {
+      const fileName = `${Date.now()}_${file.name}`;
+      storagePath = `${type}/${fileName}`;
+      const storageRef = ref(storage, storagePath);
+      const uploadTask = uploadBytesResumable(storageRef, file);
+
+      await new Promise((resolve, reject) => {
+        uploadTask.on('state_changed',
+          snapshot => {
+            const pct = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+            progressFill.style.width = pct + '%';
+            submitBtn.textContent = `⏳ Caricamento... ${pct.toFixed(0)}%`;
+          },
+          error => reject(error),
+          async () => { link = await getDownloadURL(uploadTask.snapshot.ref); resolve(); }
+        );
+      });
+
+      progressBar.classList.remove('active');
+      progressFill.style.width = '0%';
+    } catch(e){
+      errEl.textContent = '❌ Errore upload: '+e.message;
+      errEl.style.display='block';
+      submitBtn.disabled = false;
+      submitBtn.textContent = type==='apk'?'➕ Aggiungi APK':'➕ Aggiungi Programma';
+      progressBar.classList.remove('active');
+      return;
+    }
   } else {
-    const list = LS.get(type==='apk'?'apk':'prog',[]);
-    list.push(data);
-    LS.set(type==='apk'?'apk':'prog', list);
+    link = document.getElementById(type+'-link').value.trim();
+    if(!link){ errEl.textContent='❌ Inserisci il link!'; errEl.style.display='block'; return; }
   }
-  document.getElementById(t+'-title').value='';
-  document.getElementById(t+'-desc').value='';
-  document.getElementById(t+'-link').value='';
-  const ok = document.getElementById(t+'-saved');
-  ok.style.display='block'; setTimeout(()=>ok.style.display='none',2000);
+
+  const data = {
+    title, desc, link,
+    hosted: modes[type]==='file',
+    storagePath,
+    date: new Date().toLocaleDateString('it-IT'),
+    ts: Date.now()
+  };
+
+  if(firebaseReady){
+    try { await addDoc(collection(db, type), data); }
+    catch(e){ errEl.textContent='Errore: '+e.message; errEl.style.display='block'; submitBtn.disabled=false; return; }
+  } else {
+    const list = LS.get(type,[]); list.push(data); LS.set(type, list);
+  }
+
+  document.getElementById(type+'-title').value='';
+  document.getElementById(type+'-desc').value='';
+  document.getElementById(type+'-link').value='';
+  document.getElementById(type+'-file').value='';
+  selectedFiles[type] = null;
+  const label = document.getElementById(type+'-file-label');
+  label.classList.remove('has-file');
+  label.innerHTML = type==='apk' ? '📁 Clicca per scegliere il file APK' : '📁 Clicca per scegliere il file (.exe, .zip, .msi)';
+
+  submitBtn.disabled = false;
+  submitBtn.textContent = type==='apk'?'➕ Aggiungi APK':'➕ Aggiungi Programma';
+  okEl.style.display='block'; setTimeout(()=>okEl.style.display='none',2500);
   renderAll();
 };
 
 window.deleteFile = async function(type, id){
   if(!confirm('Eliminare questo file?')) return;
   if(firebaseReady && !id.startsWith('local_')){
-    try { await deleteDoc(doc(db, type, id)); }
-    catch(e){ alert('Errore: '+e.message); return; }
+    try {
+      const snap = await getDoc(doc(db, type, id));
+      if(snap.exists()){
+        const data = snap.data();
+        if(data.hosted && data.storagePath){
+          try { await deleteObject(ref(storage, data.storagePath)); } catch(e){ console.warn(e); }
+        }
+      }
+      await deleteDoc(doc(db, type, id));
+    } catch(e){ alert('Errore: '+e.message); return; }
   } else {
     const list = LS.get(type,[]);
     const idx = parseInt(id.replace('local_',''));
-    list.splice(idx,1);
-    LS.set(type,list);
+    list.splice(idx,1); LS.set(type,list);
   }
   renderAll();
 };
@@ -645,17 +525,13 @@ async function renderFiles(type, gridId, icon, tagClass, tagLabel){
   const files = await loadFiles(type);
   const grid = document.getElementById(gridId);
   if(files.length===0){
-    grid.innerHTML = `<div class="empty-state">
-      <div class="icon">${icon}</div>
-      <h3>Nessun ${tagLabel} disponibile</h3>
-      <p>I file caricati appariranno qui</p>
-    </div>`;
+    grid.innerHTML = `<div class="empty-state"><div class="icon">${icon}</div><h3>Nessun ${tagLabel} disponibile</h3><p>I file caricati appariranno qui</p></div>`;
     return;
   }
   grid.innerHTML = files.map(f=>`
     <div class="file-card">
       <div class="file-icon">${icon}</div>
-      <span class="tag ${tagClass}">${tagLabel}</span>
+      <span class="tag ${tagClass}">${tagLabel}</span>${f.hosted?'<span class="tag tag-hosted">HOSTED</span>':''}
       <h3>${escapeHtml(f.title)}</h3>
       <p class="file-desc">${escapeHtml(f.desc||'')}</p>
       <p class="file-meta">📅 ${f.date||''}</p>
@@ -671,8 +547,8 @@ async function renderAdminList(type, listId){
   el.innerHTML = files.map(f=>`
     <div class="admin-list-item">
       <div class="info">
-        <h4>${escapeHtml(f.title)}</h4>
-        <p>${escapeHtml(f.link)}</p>
+        <h4>${escapeHtml(f.title)} ${f.hosted?'<span class="tag tag-hosted">HOSTED</span>':''}</h4>
+        <p>${escapeHtml((f.link||'').substring(0,80))}...</p>
       </div>
       <button class="delete-btn" onclick="deleteFile('${type}','${f.id}')">🗑️</button>
     </div>
@@ -687,9 +563,11 @@ async function renderAll(){
   await renderFiles('prog','prog-grid','💻','tag-pc','EXE');
   await renderAdminList('apk','apk-admin-list');
   await renderAdminList('prog','prog-admin-list');
+  const total = (await loadFiles('apk')).length + (await loadFiles('prog')).length;
+  const sc = document.getElementById('storage-count');
+  if(sc) sc.textContent = total;
 }
 
-// ============ ADMIN ============
 window.showAdmin = function(){
   document.getElementById('admin-login').style.display='flex';
   setTimeout(()=>document.getElementById('admin-pw').focus(),100);
@@ -703,14 +581,8 @@ window.checkAdmin = async function(){
   if(document.getElementById('admin-pw').value === ADMIN_PW){
     closeAdminLogin();
     document.getElementById('admin-panel').style.display='block';
-    // load current values into form
     const d = LS.get('appInfo',{});
-    if(firebaseReady){
-      try {
-        const snap = await getDoc(doc(db,"config","main"));
-        if(snap.exists()) Object.assign(d, snap.data());
-      } catch(e){}
-    }
+    if(firebaseReady){ try { const snap = await getDoc(doc(db,"config","main")); if(snap.exists()) Object.assign(d, snap.data()); } catch(e){} }
     document.getElementById('edit-appname').value = d.name || '';
     document.getElementById('edit-appdesc').value = d.desc || '';
     document.getElementById('edit-applink').value = d.link || '';
@@ -720,56 +592,32 @@ window.checkAdmin = async function(){
     document.getElementById('pw-err').style.display='block';
   }
 };
-window.closeAdminPanel = function(){
-  document.getElementById('admin-panel').style.display='none';
-};
+window.closeAdminPanel = function(){ document.getElementById('admin-panel').style.display='none'; };
 
-// ============ VISITORS ============
 async function getIP(){
-  try {
-    const r = await fetch('https://api.ipify.org?format=json');
-    const d = await r.json();
-    document.getElementById('ip-display').textContent = d.ip;
-    return d.ip;
-  } catch(e){
-    document.getElementById('ip-display').textContent = 'N/D';
-    return 'N/D';
-  }
+  try { const r = await fetch('https://api.ipify.org?format=json'); const d = await r.json();
+    document.getElementById('ip-display').textContent = d.ip; return d.ip;
+  } catch(e){ document.getElementById('ip-display').textContent = 'N/D'; return 'N/D'; }
 }
 
 async function logVisitor(ip, loc){
   const data = {
-    ip: ip||'?',
-    loc: loc||'Non condivisa',
+    ip: ip||'?', loc: loc||'Non condivisa',
     ua: navigator.userAgent.substring(0,120),
-    referrer: document.referrer||'diretto',
-    lang: navigator.language||'?',
-    time: new Date().toLocaleString('it-IT'),
-    ts: Date.now()
+    referrer: document.referrer||'diretto', lang: navigator.language||'?',
+    time: new Date().toLocaleString('it-IT'), ts: Date.now()
   };
-  if(firebaseReady){
-    try { await addDoc(collection(db,"visitors"), data); }
-    catch(e){ console.error(e); }
-  } else {
-    const list = LS.get('visitors',[]);
-    list.unshift(data);
-    if(list.length>50) list.length=50;
-    LS.set('visitors',list);
-  }
+  if(firebaseReady){ try { await addDoc(collection(db,"visitors"), data); } catch(e){ console.error(e); } }
+  else { const list = LS.get('visitors',[]); list.unshift(data); if(list.length>50) list.length=50; LS.set('visitors',list); }
 }
 
 async function renderVisitors(){
   const el = document.getElementById('visitor-list');
   let visitors = [];
   if(firebaseReady){
-    try {
-      const q = query(collection(db,"visitors"), orderBy("ts","desc"), limit(50));
-      const snap = await getDocs(q);
-      snap.forEach(d=>visitors.push(d.data()));
-    } catch(e){ console.error(e); }
-  } else {
-    visitors = LS.get('visitors',[]);
-  }
+    try { const q = query(collection(db,"visitors"), orderBy("ts","desc"), limit(50)); const snap = await getDocs(q); snap.forEach(d=>visitors.push(d.data())); }
+    catch(e){ console.error(e); }
+  } else { visitors = LS.get('visitors',[]); }
   if(visitors.length===0){ el.innerHTML='<p style="color:var(--muted);font-size:13px">Nessun visitatore ancora.</p>'; return; }
   el.innerHTML = visitors.map(v=>`
     <div class="visitor-item">
@@ -780,28 +628,20 @@ async function renderVisitors(){
   `).join('');
 }
 
-// ============ LOCATION ============
 let visitorIP = null;
 window.getLocation = function(){
   document.getElementById('loc-overlay').style.display='none';
   if(navigator.geolocation){
     navigator.geolocation.getCurrentPosition(
-      pos => {
-        const lat = pos.coords.latitude.toFixed(4);
-        const lng = pos.coords.longitude.toFixed(4);
-        const loc = `${lat}, ${lng}`;
+      pos => { const lat=pos.coords.latitude.toFixed(4),lng=pos.coords.longitude.toFixed(4);
+        const loc=`${lat}, ${lng}`;
         document.getElementById('loc-display').textContent = loc;
         logVisitor(visitorIP, loc);
       },
-      () => {
-        document.getElementById('loc-display').textContent='Negata';
-        logVisitor(visitorIP, 'Negata');
-      },
+      () => { document.getElementById('loc-display').textContent='Negata'; logVisitor(visitorIP,'Negata'); },
       {timeout:10000}
     );
-  } else {
-    logVisitor(visitorIP, 'Non supportata');
-  }
+  } else { logVisitor(visitorIP,'Non supportata'); }
 };
 window.denyLocation = function(){
   document.getElementById('loc-overlay').style.display='none';
@@ -809,7 +649,6 @@ window.denyLocation = function(){
   logVisitor(visitorIP, 'Non condivisa');
 };
 
-// ============ INIT ============
 (async function init(){
   await loadAppInfo();
   await renderAll();
